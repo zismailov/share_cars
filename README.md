@@ -1,23 +1,38 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Install
 
-Things you may want to cover:
+* Ruby and Rails version
 
-* Ruby version
+`ruby 2.5.0`
 
-* System dependencies
+`rails 5.2.0`
+
+* System dependencies (versions originally used on this project)
+
+`PostgreSQL 9.5.3`
 
 * Configuration
 
+Create a database.yml
+
+`cp config/database.yml.example config/database.yml`
+
 * Database creation
 
-* Database initialization
+`bundle exec rake db:create`
+
+* Migration run
+
+`bundle exec rake db:migrate`
 
 * How to run the test suite
 
+planning on using rspec
+
 * Services (job queues, cache servers, search engines, etc.)
+
+probably important later
 
 * Deployment instructions
 
