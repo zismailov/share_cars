@@ -31,3 +31,5 @@ config/database.yml
 
 # Ignore other configuration files
 .env
+
+.DS_Store
