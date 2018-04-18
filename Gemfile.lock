@@ -50,11 +50,11 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    ast (2.4.0)
     bindex (0.5.0)
     bootsnap (1.3.0)
       msgpack (~> 1.0)
     builder (3.2.3)
-    byebug (10.0.2)
     capybara (3.0.2)
       addressable
       mini_mime (>= 0.1.3)
@@ -67,6 +67,7 @@ GEM
     chromedriver-helper (1.2.0)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -108,7 +109,14 @@ GEM
     nio4r (2.3.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    parallel (1.12.1)
+    parser (2.5.1.0)
+      ast (~> 2.4.0)
     pg (1.0.0)
+    powerpack (0.1.1)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.4)
@@ -138,6 +146,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    rainbow (3.0.0)
     rake (12.3.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
@@ -146,6 +155,16 @@ GEM
     rgeo-activerecord (6.0.0)
       activerecord (~> 5.0)
       rgeo (~> 1.0)
+    rubocop (0.55.0)
+      parallel (~> 1.10)
+      parser (>= 2.5)
+      powerpack (~> 0.1)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 1.0, >= 1.0.1)
+    rubocop-rspec (1.25.1)
+      rubocop (>= 0.53.0)
+    ruby-progressbar (1.9.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.6)
@@ -184,6 +203,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.9)
       execjs (>= 0.3.0, < 3)
+    unicode-display_width (1.3.0)
     web-console (3.6.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -201,15 +221,17 @@ PLATFORMS
 DEPENDENCIES
   activerecord-postgis-adapter
   bootsnap (>= 1.1.0)
-  byebug
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
+  pry
   puma (~> 3.11)
   rails (~> 5.2.0)
+  rubocop
+  rubocop-rspec
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
