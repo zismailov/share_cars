@@ -88,9 +88,6 @@ GEM
     ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    haml (5.0.4)
-      temple (>= 0.8.0)
-      tilt
     i18n (1.0.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -226,7 +223,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    temple (0.8.0)
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
@@ -259,7 +255,6 @@ DEPENDENCIES
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
   coffee-rails (~> 4.2)
-  haml
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
