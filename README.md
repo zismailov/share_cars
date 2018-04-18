@@ -12,6 +12,8 @@
 
 `PostgreSQL 9.5.3`
 
+`PostGis 2.2.4`
+
 * Configuration
 
 Create a database.yml
@@ -22,7 +24,7 @@ Create a database.yml
 
 `bundle exec rake db:create`
 
-* Migration run
+* Database initialization
 
 `bundle exec rake db:migrate`
 

@@ -7,7 +7,7 @@ class CreateItineraries < ActiveRecord::Migration[5.2]
       t.text :description
       t.integer :price
       t.string :title
-      t.boolean :smoking, default: false
+      t.boolean :smoking, default: false, null: false
       t.string :name
       t.integer :age
       t.string :email
@@ -16,6 +16,7 @@ class CreateItineraries < ActiveRecord::Migration[5.2]
       t.string :edition_token
       t.string :deletion_token
       t.integer :state, default: 0
+      t.string :state, default: 'pending'
       t.string :creation_ip
       t.string :deletion_ip
 

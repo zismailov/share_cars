@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_17_150127) do
+ActiveRecord::Schema.define(version: 2018_04_18_101406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2018_04_17_150127) do
     t.text "description"
     t.integer "price"
     t.string "title"
-    t.boolean "smoking", default: false
+    t.boolean "smoking", default: false, null: false
     t.string "name"
     t.integer "age"
     t.string "email"
@@ -31,11 +31,12 @@ ActiveRecord::Schema.define(version: 2018_04_17_150127) do
     t.string "creation_token"
     t.string "edition_token"
     t.string "deletion_token"
-    t.integer "state", default: 0
+    t.string "state", default: "pending"
     t.string "creation_ip"
     t.string "deletion_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "kind"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -50,6 +51,9 @@ ActiveRecord::Schema.define(version: 2018_04_17_150127) do
     t.string "country_iso_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "latitude", precision: 9, scale: 6
+    t.decimal "longitude", precision: 9, scale: 6
+    t.integer "price"
     t.index ["itinerary_id"], name: "index_locations_on_itinerary_id"
   end
 
