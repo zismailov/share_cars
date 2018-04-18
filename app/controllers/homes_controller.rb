@@ -1,3 +1,5 @@
 class HomesController < ApplicationController
-  def index; end
+  def index
+    @itineraries = Itinerary.eager_load(:locations).order(created_at: :desc).page(params[:page])
+  end
 end

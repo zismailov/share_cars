@@ -6,9 +6,8 @@
     <meta charset='utf-8'>
     <meta content='IE=edge' http-equiv='X-UA-Compatible'>
     <meta content='width=device-width, initial-scale=1' name='viewport'>
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta content='The 1st free and community-based carpooling site' name='description'>
-    <meta content='Free Carpool Association' name='author'>
+    <meta content='test' name='author'>
     <link href='../../favicon.ico' rel='icon'>
     <title>Jumbotron Template for Bootstrap</title>
     <!-- Bootstrap core CSS -->
@@ -24,12 +23,18 @@
     <!--[if lt IE 9]>  <![endif]-->
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <%= render 'layouts/navbar' %>
+    <%= render 'layouts/jumbotron' %>
     <div class='container'>
+      <%= yield %>
       <hr>
       <footer>
-        <p>© 2018 Free Carpooling</p>
+        <p>© 2018 Carpool</p>
       </footer>
     </div>
     <!--

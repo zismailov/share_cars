@@ -1,0 +1,23 @@
+<li class="itinerary row">
+  <%= link_to '#', id: "itinerary_#{itinerary.id}" do %>
+    <div class="driver col-md-3 name">
+      <%= itinerary.name %>
+      <%= number_to_age(itinerary.age) %>
+    </div>
+    <div class="trip-info col-md-6">
+      <div class="title">
+        <%= l itinerary.leave_at, format: :long %>
+      </div>
+      <p>
+        <%= itinerary.locations.find_by(kind: 'From').city %>
+        &rarr;
+        <%= itinerary.locations.find_by(kind: 'To').city %>
+      </p>
+    </div>
+    <div class="trip-info col-md-3">
+      <div class="price">
+        <%= number_to_currency itinerary.price %>
+      </div>
+    </div>
+  <% end %>
+</li>
