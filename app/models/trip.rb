@@ -23,11 +23,7 @@ class Trip < ApplicationRecord
   end
 
   def as_indexed_json
-    trip_attrs =
-      as_json(
-        only: %i[seats comfort state],
-        include: :locations
-      )
+    as_json(only: %i[seats comfort state]).merge(points: points.as_json)
   end
 
   def self.search(query = nil, options = {})
@@ -55,7 +51,7 @@ class Trip < ApplicationRecord
       search_definition[:query][:bool][:must] << {
         multi_match: {
           query: query,
-          fields: %w[city state],
+          fields: { points: [:city] },
           operator: "and"
         }
       }
