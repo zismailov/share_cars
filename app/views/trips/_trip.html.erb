@@ -9,9 +9,9 @@
         <%= l trip.leave_at, format: :long %>
       </div>
       <p>
-        <%= trip.locations.find_by(kind: 'From').city %>
+        <%= trip.points.find_by(kind: 'From').city %>
         &rarr;
-        <%= trip.locations.find_by(kind: 'To').city %>
+        <%= trip.points.find_by(kind: 'To').city %>
       </p>
     </div>
     <div class="trip-info col-md-3">
