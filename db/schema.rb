@@ -10,13 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_18_101406) do
+ActiveRecord::Schema.define(version: 2018_04_27_120737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
 
-  create_table "itineraries", force: :cascade do |t|
+  create_table "points", force: :cascade do |t|
+    t.string "kind"
+    t.integer "rank"
+    t.bigint "trip_id"
+    t.decimal "lat", precision: 9, scale: 6
+    t.decimal "decimal", precision: 9, scale: 6
+    t.decimal "lon", precision: 9, scale: 6
+    t.string "address1"
+    t.string "address2"
+    t.string "city"
+    t.string "zipcode"
+    t.string "country_iso_code"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_points_on_trip_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
     t.datetime "leave_at", null: false
     t.integer "seats"
     t.string "comfort"
@@ -34,28 +52,10 @@ ActiveRecord::Schema.define(version: 2018_04_18_101406) do
     t.string "state", default: "pending"
     t.string "creation_ip"
     t.string "deletion_ip"
+    t.string "kind"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "kind"
   end
 
-  create_table "locations", force: :cascade do |t|
-    t.string "kind"
-    t.integer "rank"
-    t.bigint "itinerary_id"
-    t.geometry "lonlat", limit: {:srid=>0, :type=>"st_point"}
-    t.string "address1"
-    t.string "address2"
-    t.string "city"
-    t.string "zipcode"
-    t.string "country_iso_code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.decimal "latitude", precision: 9, scale: 6
-    t.decimal "longitude", precision: 9, scale: 6
-    t.integer "price"
-    t.index ["itinerary_id"], name: "index_locations_on_itinerary_id"
-  end
-
-  add_foreign_key "locations", "itineraries"
+  add_foreign_key "points", "trips"
 end
