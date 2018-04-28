@@ -15,3 +15,13 @@
 //= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
+//= require_self
+
+
+$(function() {
+  $('.datepicker').datepicker({
+    language: 'en'
+  });
+});
