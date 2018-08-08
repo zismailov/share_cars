@@ -1,7 +1,6 @@
 $orangeDefault: #f5b833;
 $orangeStrong: #ff6f00;
 $bgDefault: #e9f1ff;
-
 .jumbotron {
   background-color: $bgDefault;
 }
@@ -15,4 +14,8 @@ $bgDefault: #e9f1ff;
   border-top: 0;
   border-radius: 0 0 15px 15px;
   text-align: center;
+}
+
+.ui-autocomplete-loading {
+  background: #fff image_url('ui-anim_basic_34x34.gif') no-repeat right center;
 }

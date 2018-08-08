@@ -1,14 +1,14 @@
 /*
  * import nothing from sprockets as it is explained here https://github.com/twbs/bootstrap-sass
  *= require bootstrap-datepicker3
+ *= require jquery-ui/autocomplete
  */
 
- @import "bootstrap-sprockets";
- @import "bootstrap";
-
- @import "_layout";
- @import "_typography";
- @import "_navbar";
- @import "_jumbotron";
- @import "_home";
- @import "_trip";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "_layout";
+@import "_typography";
+@import "_navbar";
+@import "_jumbotron";
+@import "_home";
+@import "_trip";
