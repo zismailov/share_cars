@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :trips
-  resources :searches
 
   resources :geocodes do
     collection do
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
     end
   end
 
+  post "search", to: "search#index"
   get "homes/index"
 
   root to: "homes#index"
