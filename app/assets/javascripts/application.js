@@ -4,7 +4,9 @@
 //= require jquery-ui/autocomplete
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker/core
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.js
 //= require _layout
 //= require _jumbotron
+//= require nprogress
+//= require nprogress-turbolinks
 //= require turbolinks
