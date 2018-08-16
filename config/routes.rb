@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
   end
 
-  post "search", to: "search#index"
+  get "search", to: "search#index"
   get "homes/index"
 
   root to: "homes#index"

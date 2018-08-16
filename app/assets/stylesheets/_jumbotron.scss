@@ -1,8 +1,13 @@
 $orangeDefault: #f5b833;
 $orangeStrong: #ff6f00;
 $bgDefault: #e9f1ff;
+
 .jumbotron {
   background-color: $bgDefault;
+  &.small-jumbotron {
+    padding: 15px 0 15px 0;
+    margin-bottom: 0px;
+  }
 }
 
 .publish {

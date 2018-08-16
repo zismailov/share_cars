@@ -1,5 +1,23 @@
 <% content_for :jumbotron do %>
-  <%= render 'layouts/jumbotron' %>
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <h2>Find your carpool</h2>
+          <p>Free, community and free ridesharing.</p>
+          <%= render partial: 'search/form', locals: { 'large_inputs': true } %>
+        </div>
+        <div class="col-md-3">
+          <div class="publish">
+            You have a car ?
+            <br/>
+            <br/>
+            <%= link_to 'Post an ad', new_trip_path, class: 'btn btn-lg btn-warning' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
 
 <div class='row'>

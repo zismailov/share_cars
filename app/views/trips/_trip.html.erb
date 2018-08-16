@@ -1,23 +1,33 @@
-<li class="trip row">
-  <%= link_to '#', id: "trip_#{trip.id}" do %>
-    <div class="driver col-md-3 name">
-      <%= trip.name %>
-      <%= number_to_age(trip.age) %>
+<div class="trip">
+  <%= link_to '#', class: 'trip-item' do %>
+    <div class="driver">
+      <div class="avatar">
+        <%= image_tag('carpooling-avatar-default2.png') %>
+      </div>
+      <div class="info">
+        <div class="name">
+          <%= trip.name %>
+        </div>
+        <div class="age">
+          <%= "#{trip.age} years" %>
+        </div>
+      </div>
     </div>
-    <div class="trip-info col-md-6">
+    <div class="trip-info">
       <div class="title">
         <%= l trip.leave_at, format: :long %>
       </div>
-      <p>
-        <%= trip.points.find_by(kind: 'From').city %>
+      <div class="details">
+        <%= "#{@search.short_from_name}" %>
         &rarr;
-        <%= trip.points.find_by(kind: 'To').city %>
-      </p>
-    </div>
-    <div class="trip-info col-md-3">
-      <div class="price">
-        <%= number_to_currency trip.price %>
+        <%= "#{@search.short_to_name}" %>
       </div>
     </div>
+    <div class="price">
+      <p>
+        <%= number_to_currency(trip.price) %>
+      </p>
+    </div>
+    <div class="clearfix"></div>
   <% end %>
-</li>
+</div>

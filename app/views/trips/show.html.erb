@@ -9,11 +9,8 @@
     </div>
   </div>
 <% end %>
-<% if @search.valid? %>
-  <h3>
-    <%= "#{pluralize(@trips.count, 'carpooling', 'carpools')} from #{@search.short_from_name} to #{@search.short_to_name}" %>
-  </h3>
-<% end %>
+<h3>
+  <%= "#{pluralize(Trip.count, 'carpooling', 'carpools')} trips to the site" %>
+</h3>
 <hr class="trip-list"/>
-
 <%= render @trips %>
