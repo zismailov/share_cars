@@ -7,6 +7,4 @@
 //= require bootstrap-datepicker
 //= require _layout
 //= require _jumbotron
-//= require nprogress
-//= require nprogress-turbolinks
 //= require turbolinks
