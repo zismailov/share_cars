@@ -9,7 +9,7 @@
           <%= trip.name %>
         </div>
         <div class="age">
-          <%= "#{trip.age} years" %>
+          <%= "#{trip.age} years" if trip.age.present? %>
         </div>
       </div>
     </div>
