@@ -3,12 +3,15 @@ require "elasticsearch/model"
 class Trip < ApplicationRecord
   has_many :points, dependent: :destroy
 
+  # eager load points each time a trip is requested
   default_scope { includes(:points).order("created_at ASC") }
 
+  # access the departure point that comes eager loaded with a trip
   def point_from
     points.find { |point| point.kind == "From" }
   end
 
+  # access the destination point that comes eager loaded with a trip
   def point_to
     points.find { |point| point.kind == "To" }
   end
@@ -48,8 +51,6 @@ class Trip < ApplicationRecord
   #
   def self.search(options = {})
     options ||= {}
-
-    # logger.info options.inspect
 
     # empty search not allowed, for now
     return nil if options.blank?
