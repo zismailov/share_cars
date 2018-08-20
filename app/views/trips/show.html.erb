@@ -1,16 +1,51 @@
-<% content_for :jumbotron do %>
-  <div class="jumbotron small-jumbotron">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-9">
-          <%= render partial: 'search/form', locals: { 'large_inputs': false } %>
+<br/>
+<p>
+  <%= link_to '&larr; Back to results'.html_safe, :back %>
+</p>
+<h3>
+  <%= "Travel from #{@trip.point_from.city} to #{@trip.point_to.city}" %>
+</h3>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-3">
+            Departure
+          </div>
+          <div class="col-md-9">
+            <strong>
+              <%= "#{@trip.point_from.city}" %>
+            </strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            Arrival
+          </div>
+          <div class="col-md-9">
+            <strong>
+              <%= "#{@trip.point_to.city}" %>
+            </strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            Date of departure
+          </div>
+          <div class="col-md-9">
+            <strong>
+              <%= "#{l @trip.leave_at, format: :long}" %>
+            </strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            Details
+          </div>
+          <div class="col-md-9"></div>
         </div>
       </div>
     </div>
   </div>
-<% end %>
-<h3>
-  <%= "#{pluralize(Trip.count, 'carpooling', 'carpools')} trips to the site" %>
-</h3>
-<hr class="trip-list"/>
-<%= render @trips %>
+</div>
