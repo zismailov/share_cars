@@ -75,9 +75,7 @@ class Trip < ApplicationRecord
     __elasticsearch__.search(search_definition)
   end
 
-  private
-
-  def self.nested_point_definition(kind, coordinates)
+  private_class_method def self.nested_point_definition(kind, coordinates)
     {
       nested: {
         path: :points,
