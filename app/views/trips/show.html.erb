@@ -10,40 +10,123 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-4">
             Departure
           </div>
-          <div class="col-md-9">
+          <div class="col-md-8">
             <strong>
               <%= "#{@trip.point_from.city}" %>
             </strong>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-4">
             Arrival
           </div>
-          <div class="col-md-9">
+          <div class="col-md-8">
             <strong>
               <%= "#{@trip.point_to.city}" %>
             </strong>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-4">
             Date of departure
           </div>
-          <div class="col-md-9">
+          <div class="col-md-8">
             <strong>
-              <%= "#{l @trip.leave_at, format: :long}" %>
+              <%= "#{l(@trip.leave_at, format: :long).split(' to ')[0]}" %>
             </strong>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-3">
-            Details
+          <div class="col-md-4">
+            Departure time
           </div>
-          <div class="col-md-9"></div>
+          <div class="col-md-8">
+            <strong>
+              <%= "#{l(@trip.leave_at, format: :long).split(' to ')[1]}" %>
+            </strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            Number of places
+          </div>
+          <div class="col-md-8">
+            <strong>
+              <%= @trip.seats %>
+            </strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            Comfort
+          </div>
+          <div class="col-md-8">
+            <strong>
+              <%= @trip.comfort %>
+            </strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            Comment
+          </div>
+          <div class="col-md-8">
+            <div class="well">
+              <%= @trip.description.encode("iso-8859-1").force_encoding("utf-8") %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            Price
+          </div>
+          <div class="col-md-8">
+            <%= @trip.price %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            Title
+          </div>
+          <div class="col-md-8">
+            <%= @trip.title %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            Smoking
+          </div>
+          <div class="col-md-8">
+            <%= @trip.smoking %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="driver">
+          <div class="avatar">
+            <%= image_tag('carpooling-avatar-default2.png') %>
+          </div>
+          <div class="info">
+            <div class="name">
+              <%= @trip.name %>
+            </div>
+            <div class="age">
+              <%= "#{@trip.age} ans" if @trip.age.present? %>
+            </div>
+            <div class="email">
+              <%= @trip.email %>
+            </div>
+            <div class="phone">
+              <%= @trip.phone %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
