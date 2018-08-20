@@ -2,18 +2,27 @@
   <div class="jumbotron small-jumbotron">
     <div class="container">
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-9 col-md-offset-1">
           <%= render partial: 'search/form', locals: { 'large_inputs': false } %>
         </div>
       </div>
     </div>
   </div>
 <% end %>
+<br/>
 <% if @search.valid? %>
-  <h3>
-    <%= "#{pluralize(@trips.count, 'carpooling', 'carpools')} from #{@search.short_from_name} to #{@search.short_to_name}" %>
-  </h3>
+  <div class="row">
+    <div class="col-md-7 col-md-offset-1">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <%= "#{pluralize(@trips.count, 'carpooling', 'carpools')} from #{@search.short_from_name} to #{@search.short_to_name}" %>
+          </h3>
+        </div>
+        <div class="panel-body" style="padding: 0">
+          <%= render @trips %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
-<hr class="trip-list"/>
-
-<%= render @trips %>

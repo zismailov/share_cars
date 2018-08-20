@@ -1,7 +1,6 @@
 $borderColor: #eeeeee;
 $mainLinkColor: #e9f1ff;
 $priceColor: #ff6f00;
-
 hr.trip-list {
   margin-bottom: 0;
 }
@@ -21,7 +20,7 @@ a.trip-item:hover {
     display: block;
     float: left;
     padding: 8px;
-    width: 180px;
+    width: 25%;
     .avatar {
       text-align: center;
       display: block;
@@ -47,13 +46,14 @@ a.trip-item:hover {
     display: block;
     float: left;
     padding: 14px;
-    width: 320px;
+    width: 55%;
     .title {
-      font-weight: bold;
+      font-weight: 400;
       font-size: 18px;
     }
   }
   .price {
+    width: 20%;
     display: block;
     float: left;
     padding: 8px;
