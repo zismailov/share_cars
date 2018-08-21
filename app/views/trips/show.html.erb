@@ -1,9 +1,9 @@
 <br/>
 <p>
-  <%= link_to '&larr; Back to results'.html_safe, :back %>
+  <%= link_to '&larr; Retour aux resutats'.html_safe, :back %>
 </p>
 <h3>
-  <%= "Travel from #{@trip.point_from.city} to #{@trip.point_to.city}" %>
+  <%= "Back to results #{@trip.point_from.city} to #{@trip.point_to.city}" %>
 </h3>
 <div class="row">
   <div class="col-md-6">
@@ -11,11 +11,21 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-4">
+            <%= t Trip.human_attribute_name(:kind) %>
+          </div>
+          <div class="col-md-8">
+            <strong>
+              <%= "#{@trip.kind}" %>
+            </strong>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
             Departure
           </div>
           <div class="col-md-8">
             <strong>
-              <%= "#{@trip.point_from.city}" %>
+              <%= ed "#{@trip.point_from.city}" %>
             </strong>
           </div>
         </div>
@@ -25,7 +35,7 @@
           </div>
           <div class="col-md-8">
             <strong>
-              <%= "#{@trip.point_to.city}" %>
+              <%= ed "#{@trip.point_to.city}" %>
             </strong>
           </div>
         </div>
@@ -61,11 +71,11 @@
         </div>
         <div class="row">
           <div class="col-md-4">
-            Comfort
+            <%= t Trip.human_attribute_name(:comfort) %>
           </div>
           <div class="col-md-8">
             <strong>
-              <%= @trip.comfort %>
+              <%= t :"activerecord.attributes.trip.comfort_#{@trip.comfort}" %>
             </strong>
           </div>
         </div>
@@ -75,7 +85,7 @@
           </div>
           <div class="col-md-8">
             <div class="well">
-              <%= @trip.description.encode("iso-8859-1").force_encoding("utf-8") %>
+              <%= ed @trip.description %>
             </div>
           </div>
         </div>
@@ -109,25 +119,46 @@
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-body">
-        <div class="driver">
-          <div class="avatar">
-            <%= image_tag('carpooling-avatar-default2.png') %>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="driver">
+              <div class="avatar">
+                <%= image_tag('carpooling-avatar-default2.png') %>
+              </div>
+              <div class="info">
+                <div class="name">
+                  <%= ed @trip.name %>
+                </div>
+                <div class="age">
+                  <%= "#{@trip.age} years" if @trip.age.present? %>
+                </div>
+                <div class="email">
+                  <%= @trip.email %>
+                </div>
+                <div class="phone">
+                  <%= @trip.phone %>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="info">
-            <div class="name">
-              <%= @trip.name %>
-            </div>
-            <div class="age">
-              <%= "#{@trip.age} ans" if @trip.age.present? %>
-            </div>
-            <div class="email">
-              <%= @trip.email %>
-            </div>
-            <div class="phone">
-              <%= @trip.phone %>
+          <div class="col-md-4">
+            <div class="price">
+              <p>
+                <%= "#{@trip.price} $" %>
+              </p>
+              <div class="seats">
+                <%= "#{@trip.seats} seats" %>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <center>
+          <%= link_to 'Book', '#', class: 'btn btn-warning btn-lg' %>
+        </center>
       </div>
     </div>
   </div>
