@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_filter :load_trip, only: [:show]
+  before_action :load_trip, only: [:show]
 
   def show; end
 
