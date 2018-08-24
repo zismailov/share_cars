@@ -157,9 +157,14 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <center>
-          <%= link_to 'Book', '#', class: 'btn btn-warning btn-lg' %>
+          <%= link_to 'Book', '#', class: 'btn btn-warning btn-lg', id: 'cta_book' %>
         </center>
       </div>
     </div>
   </div>
 </div>
+<script>
+  $('#cta_book').on('click', function() {
+    alert('Coming soon!')
+  })
+</script>
