@@ -1,0 +1,7 @@
+en:
+  from: From
+  to: To
+  step: City or locality
+  from_place: Departure
+  to_place: Arrival
+  step_place: Step
