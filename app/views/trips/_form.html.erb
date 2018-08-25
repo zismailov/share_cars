@@ -3,10 +3,10 @@
     <%= simple_form_for @trip, html: { class: 'form-horizontal' } do |f| %>
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">You are</h3>
+          <h3 class="panel-title">Type of news</h3>
         </div>
         <div class="panel-body">
-          <%= f.input :kind, as: :radio_buttons, wrapper: :horizontal_radio_and_checkboxes, item_label_class: 'radio-inline', collection: [['Driver', 'Driver'], ['Passenger', 'Passenger']], label: false %>
+          <%= f.input :kind, as: :radio_buttons, wrapper: :horizontal_radio_and_checkboxes, item_label_class: 'radio-inline', collection: [['Driver', 'Driver'], ['Passenger', 'Passenger']], label: 'You are' %>
         </div>
       </div>
       <div class="panel panel-default">
@@ -33,6 +33,18 @@
             <%= p.input :location_coordinates, as: :hidden %>
             <%= p.input :kind, as: :hidden %>
           <% end %>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">You</h3>
+        </div>
+        <div class="panel-body">
+          <%= f.input :title, as: :radio_buttons, wrapper: :horizontal_radio_and_checkboxes, item_label_class: 'radio-inline', collection: [['Man', 'M'], ['Woman', 'W']], label: 'You are' %>
+          <%= f.input :name, as: :string, wrapper: :horizontal_form %>
+          <%= f.input :age, as: :string, wrapper: :horizontal_form %>
+          <%= f.input :phone, as: :string, wrapper: :horizontal_form %>
+          <%= f.input :email, as: :string, wrapper: :horizontal_form %>
         </div>
       </div>
       <%= f.submit 'Create your ad', class: 'btn btn-primary btn-lg' %>
