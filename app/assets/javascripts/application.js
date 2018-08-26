@@ -4,7 +4,7 @@
 //= require jquery-ui/widgets/autocomplete
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker/core
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.en-CA.js
 //= require _layout
 //= require _jumbotron
 //= require turbolinks
