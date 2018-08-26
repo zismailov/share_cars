@@ -5,6 +5,8 @@ en:
     attributes:
       trip:
         kind: Type
+        price: Price
+        description: Comment
         comfort: comfort
         comfort_basic: basic
         comfort_normal: normal

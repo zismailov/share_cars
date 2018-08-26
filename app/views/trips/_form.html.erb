@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-6">
     <%= simple_form_for @trip, html: { class: 'form-horizontal' } do |f| %>
+      <%= f.error :base %>
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">Type of news</h3>
@@ -16,9 +17,12 @@
         <div class="panel-body">
           <%= f.input :leave_at, as: :string, wrapper: :horizontal_form, input_html: { class: 'datepicker' }, placeholder: 'Date', label: 'Date' %>
           <%= f.simple_fields_for :points, @required_points do |p| %>
-            <%= p.input :location_name, as: :string, wrapper: :horizontal_form, input_html: { class: 'geocoder' }, placeholder: t(p.object.kind.downcase), label: t(p.object.kind.downcase+'_place') %>
+            <%= p.input :location_name, as: :string, wrapper: :horizontal_form, input_html: { class: 'geocoder' }, placeholder: t(p.object.kind.downcase), label: t(p.object.kind.downcase+'_place'), required: true %>
+            <%= p.input :location_coordinates, as: :hidden %>
             <%= p.input :kind, as: :hidden %>
           <% end %>
+          <%= f.input :price, wrapper: :horizontal_form %>
+          <%= f.input :description, wrapper: :horizontal_form %>
         </div>
       </div>
       <div class="panel panel-default">
@@ -32,6 +36,7 @@
             <%= p.input :location_name, as: :string, wrapper: :horizontal_form, input_html: { class: 'geocoder' }, placeholder: t(p.object.kind.downcase), label: t(p.object.kind.downcase+'_place') + " #{i}" %>
             <%= p.input :location_coordinates, as: :hidden %>
             <%= p.input :kind, as: :hidden %>
+            <%= p.input :rank, as: :hidden %>
           <% end %>
         </div>
       </div>
