@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2018_04_27_120737) do
     t.integer "rank"
     t.bigint "trip_id"
     t.decimal "lat", precision: 9, scale: 6
-    t.decimal "decimal", precision: 9, scale: 6
     t.decimal "lon", precision: 9, scale: 6
     t.string "address1"
     t.string "address2"
@@ -34,7 +33,8 @@ ActiveRecord::Schema.define(version: 2018_04_27_120737) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.datetime "leave_at", null: false
+    t.date "departure_date"
+    t.time "departure_time"
     t.integer "seats"
     t.string "comfort"
     t.text "description"
@@ -48,10 +48,9 @@ ActiveRecord::Schema.define(version: 2018_04_27_120737) do
     t.string "creation_token"
     t.string "edition_token"
     t.string "deletion_token"
-    t.string "state", default: "pending"
+    t.string "state", default: "pending", null: false
     t.string "creation_ip"
     t.string "deletion_ip"
-    t.string "kind"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

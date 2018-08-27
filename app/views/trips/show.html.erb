@@ -11,16 +11,6 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-4">
-            <%= t Trip.human_attribute_name(:kind) %>
-          </div>
-          <div class="col-md-8">
-            <strong>
-              <%= "#{@trip.kind}" %>
-            </strong>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
             Departure
           </div>
           <div class="col-md-8">
@@ -45,7 +35,7 @@
           </div>
           <div class="col-md-8">
             <strong>
-              <%= "#{l(@trip.leave_at, format: :long).split(' to ')[0]}" %>
+              <%= l @trip.departure_date %>
             </strong>
           </div>
         </div>
@@ -55,7 +45,7 @@
           </div>
           <div class="col-md-8">
             <strong>
-              <%= "#{l(@trip.leave_at, format: :long).split(' to ')[1]}" %>
+              <%= l @trip.departure_time, format: :short %>
             </strong>
           </div>
         </div>

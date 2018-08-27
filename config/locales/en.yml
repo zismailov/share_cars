@@ -211,5 +211,5 @@ en:
     formats:
       default: "%a, %d %b %Y %H:%M:%S %z"
       long: "%a. %-d %B %Y to %Hh%M"
-      short: "%d %b %H:%M"
+      short: "%Hh%M"
     pm: pm

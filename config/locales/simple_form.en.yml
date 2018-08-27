@@ -29,3 +29,10 @@ en:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
+    options:
+      trip:
+        comfort:
+          standard: Basic
+          comfort: Normal
+          first_class: Comfortable
+          luxury: Luxury
