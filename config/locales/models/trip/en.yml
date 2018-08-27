@@ -13,6 +13,7 @@ en:
         phone: Phone
         email: Email
         seats: Number of places
+        smoking: Smoking
         comfort: Comfort
         comfort_standard: Basic
         comfort_comfort: Normal
