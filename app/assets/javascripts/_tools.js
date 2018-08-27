@@ -1,5 +1,12 @@
+function initDatepicker() {
+  $('.datepicker').datepicker({
+    autoclose: true,
+    language: 'en'
+  })
+}
+
 function initAutocomplete() {
-  $(".geocoder").autocomplete({
+  $('.geocoder').autocomplete({
     source: function (request, response) {
       $.getJSON("/geocodes/autocomplete?term=" + request.term, function (data) {
         response($.map(data, function (el) {

@@ -8,7 +8,9 @@
   <%= f.input :date, as: :string, input_html: { class: "datepicker #{input_class}" }, label: false, placeholder: 'Date' %>
   <button class="<%= btn_class %> btn btn-default btn-primary" type="submit">Search</button>
 <% end %>
-<script>
-  initAutocomplete()
-  initDatepicker()
-</script>
+<% content_for :javascript_footer do %>
+  <script>
+    initAutocomplete()
+    initDatepicker() 
+  </script>
+<% end %>

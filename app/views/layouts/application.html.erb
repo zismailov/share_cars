@@ -18,15 +18,15 @@
     <%= render 'layouts/google_tag_manager' %>
     <div class="loading-indicator"></div>
     <%= render 'layouts/navbar' %>
-    <%= yield :jumbotron %>
+    <%= yield :search_zone %>
     <div class="container">
       <%= yield %>
-      <hr/>
       <footer>
+        <hr/>
         <p>© 2018 Carpool</p>
       </footer>
     </div>
-    <%= yield :javascript %>
+    <%= yield :javascript_footer %>
   </body>
 </html>
 
