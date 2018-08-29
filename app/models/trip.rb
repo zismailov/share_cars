@@ -3,22 +3,24 @@ require "elasticsearch/model"
 class Trip < ApplicationRecord
   # use of this classification https://en.wikipedia.org/wiki/Hotel_rating
   CAR_RATINGS = %w[standard comfort first_class luxury].freeze
+  STATES = %w[pending confirmed deleted].freeze
 
   has_many :points, inverse_of: :trip, dependent: :destroy
 
-  has_secure_token :creation_token
+  has_secure_token :confirmation_token
   has_secure_token :edition_token
   has_secure_token :deletion_token
 
   accepts_nested_attributes_for :points, reject_if: proc { |attrs| attrs[:location_name].blank? && attrs[:kind] == "Step" }
 
-  validates_presence_of :departure_date, :departure_time, :price, :description, :title, :name, :age, :phone, :email, :seats, :comfort
+  validates_presence_of :departure_date, :departure_time, :price, :description, :title, :name, :age, :phone, :email, :seats, :comfort, :state
   validates_inclusion_of :smoking, in: [true, false]
   validates_inclusion_of :comfort, in: CAR_RATINGS
+  validates_inclusion_of :state, in: STATES
   validates_numericality_of :price, :age, :seats
   validate :must_have_from_and_to_points
 
-  # scopes
+  after_create :send_information_email
 
   # eager load points each time a trip is requested
   default_scope { includes(:points).order("created_at ASC") }
@@ -36,6 +38,18 @@ class Trip < ApplicationRecord
   # access the steps point that comes eager loaded with a trip
   def step_points
     points.select { |point| point.kind == "Step" }
+  end
+
+  def confirm!
+    update_attribute(:state, "confirmed")
+  end
+
+  def confirmed?
+    state == "confirmed"
+  end
+
+  def soft_delete!
+    update_attribute(:state, "deleted")
   end
 
   ### ELASTICSEARCH SECTION
@@ -146,5 +160,9 @@ class Trip < ApplicationRecord
     if points.empty? || point_from.nil? || point_to.nil?
       errors.add(:base, "Departure and arrival of the trip are necessary")
     end
+  end
+
+  def send_information_email
+    UserMailer.trip_information(self).deliver_now
   end
 end

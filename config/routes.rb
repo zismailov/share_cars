@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  resources :trips
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
+  resources :trips, except: [:destroy] do
+    member do
+      get "confirm"
+      get "delete"
+    end
+    resources :messages
+  end
 
   resources :geocodes do
     collection do

@@ -1,7 +1,10 @@
 <br/>
 <p>
-  <%= link_to '&larr; Retour aux resutats'.html_safe, :back %>
+  <%= link_to '&larr; Back to results'.html_safe, :back %>
 </p>
+
+<%= flash_messages %>
+
 <h3>
   <%= "Back to results #{@trip.point_from.city} to #{@trip.point_to.city}" %>
 </h3>
@@ -15,7 +18,7 @@
           </div>
           <div class="col-md-8">
             <strong>
-              <%= ed "#{@trip.point_from.city}" %>
+              <%= "#{@trip.point_from.city}" %>
             </strong>
           </div>
         </div>
@@ -25,7 +28,7 @@
           </div>
           <div class="col-md-8">
             <strong>
-              <%= ed "#{@trip.point_to.city}" %>
+              <%= "#{@trip.point_to.city}" %>
             </strong>
           </div>
         </div>
@@ -75,7 +78,7 @@
           </div>
           <div class="col-md-8">
             <div class="well">
-              <%= ed @trip.description %>
+              <%= @trip.description %>
             </div>
           </div>
         </div>
@@ -117,7 +120,7 @@
               </div>
               <div class="info">
                 <div class="name">
-                  <%= ed @trip.name %>
+                  <%= @trip.name %>
                 </div>
                 <div class="age">
                   <%= "#{@trip.age} years" if @trip.age.present? %>
@@ -146,15 +149,12 @@
     </div>
     <div class="panel panel-default">
       <div class="panel-body">
-        <center>
-          <%= link_to 'Book', '#', class: 'btn btn-warning btn-lg', id: 'cta_book' %>
-        </center>
+        <div id="message_zone">
+          <div class="message" id="message-wrapper">
+            <%= render 'messages/form' %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<script>
-  $('#cta_book').on('click', function() {
-    alert('Coming soon!')
-  })
-</script>

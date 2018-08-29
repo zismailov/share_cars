@@ -1,0 +1,11 @@
+Hello <%= @trip.name %>
+
+Information about your ad :
+
+Journey of <%= @trip.point_from.city %> to <%= @trip.point_to.city %>
+
+Confirmation link : <%= link_to 'Confirm your ad', confirm_trip_url(@trip, { token: @trip.confirmation_token }) %>
+
+Modification link : <%= link_to 'Edit your ad', edit_trip_url(@trip, { token: @trip.edition_token }) %>
+
+Delete link : <%= link_to 'Delete your ad', delete_trip_url(@trip, { token: @trip.deletion_token }) %>
