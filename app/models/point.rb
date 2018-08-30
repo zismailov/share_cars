@@ -1,12 +1,16 @@
 class Point < ApplicationRecord
+  KINDS = %w[From Step To].freeze
+
   belongs_to :trip, inverse_of: :points
 
   attr_accessor :location_name, :location_coordinates
 
-  validates_presence_of :trip, :lat, :lon, :city
   validates_presence_of :location_name, :location_coordinates
+  validates_presence_of :kind, :rank, :trip, :lat, :lon, :city
+  validates_inclusion_of :kind, in: KINDS
+  validates_numericality_of :rank
 
-  before_validation :set_lat_lon, :set_city
+  before_validation :set_lat_lon, :set_city, :set_from_rank, :set_to_rank
 
   def as_json(_options = {})
     super(
@@ -30,5 +34,13 @@ class Point < ApplicationRecord
 
   def set_city
     self.city = location_name
+  end
+
+  def set_from_rank
+    self.rank = 0 if kind == "From"
+  end
+
+  def set_to_rank
+    self.rank = 999 if kind == "To"
   end
 end
