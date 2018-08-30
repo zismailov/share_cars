@@ -55,7 +55,7 @@ class TripsController < ApplicationController
   end
 
   def update
-    if @trip.save
+    if @trip.update_attributes(trip_params)
       redirect_to @trip, notice: "Your ad is up-to-date Thank you for your contribution to the community!"
     else
       point_from = @trip.point_from || @trip.points.build(kind: "From")
