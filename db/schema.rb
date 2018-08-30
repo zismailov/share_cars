@@ -19,8 +19,7 @@ ActiveRecord::Schema.define(version: 2018_08_29_102034) do
     t.bigint "trip_id"
     t.string "sender_name"
     t.string "sender_email"
-    t.string "body"
-    t.text "message"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_messages_on_trip_id"
