@@ -15,7 +15,8 @@
     </div>
     <div class="trip-info">
       <div class="title">
-        <%= l trip.departure_time, format: :long %>
+        <%= l trip.departure_date, format: :long %>
+        <%= l trip.departure_time, format: :short %>
       </div>
       <div class="details">
         <%= "#{trip.point_from.city}" %>
