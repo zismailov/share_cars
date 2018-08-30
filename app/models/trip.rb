@@ -58,7 +58,6 @@ class Trip < ApplicationRecord
   private
 
   def must_have_from_and_to_points
-    logger.info errors.full_messages
     if points.empty? || point_from.nil? || point_to.nil?
       errors.add(:base, "Departure and arrival of the trip are necessary")
     end
