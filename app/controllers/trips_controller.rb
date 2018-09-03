@@ -1,7 +1,10 @@
 class TripsController < ApplicationController
   before_action :load_trip, only: %i[show update]
 
-  def index; end
+  def index
+    params.permit!
+    @trips = Trip.all.order(created_at: :desc).page(params[:page]).per(5)
+  end
 
   def show
     unless @trip.confirmed?
