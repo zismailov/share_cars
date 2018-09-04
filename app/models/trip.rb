@@ -103,6 +103,6 @@ class Trip < ApplicationRecord
   end
 
   def send_information_email
-    UserMailer.trip_information(self).deliver_now
+    UserMailer.trip_information(self).deliver_later
   end
 end

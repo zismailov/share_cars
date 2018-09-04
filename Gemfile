@@ -9,8 +9,9 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap-datepicker-rails"
 gem "bootstrap-sass"
 gem "coffee-rails", "~> 4.2"
-gem "elasticsearch-model"
-gem "elasticsearch-rails"
+# gem "elasticsearch-model"
+# gem "elasticsearch-rails"
+gem "delayed_job_active_record"
 gem "geocoder"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
@@ -23,12 +24,12 @@ gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.0"
 gem "sass-rails", "~> 5.0"
-gem "sidekiq"
 gem "simple_form"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 
 group :development, :test do
+  gem "factory_bot_rails"
   gem "pry"
   gem "rspec-rails", "~> 3.7"
   gem "rubocop", require: false
@@ -36,6 +37,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "daemons" # for running delayed jobs in development env
   gem "letter_opener"
   gem "letter_opener_web"
   gem "listen", ">= 3.0.5", "< 3.2"
