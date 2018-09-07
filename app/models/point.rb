@@ -41,6 +41,6 @@ class Point < ApplicationRecord
   end
 
   def set_to_rank
-    self.rank = 999 if kind == "To"
+    self.rank = 99 if kind == "To"
   end
 end
