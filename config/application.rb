@@ -17,7 +17,5 @@ module ShareCars
     # the framework and any gems in your application.
 
     config.action_mailer.default_url_options = { host: ENV["MAILER_HOST"] }
-
-    config.active_job.queue_adapter = :delayed_job
   end
 end
