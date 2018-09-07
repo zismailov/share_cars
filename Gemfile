@@ -11,6 +11,7 @@ gem "bootstrap-sass"
 gem "coffee-rails", "~> 4.2"
 # gem "elasticsearch-model"
 # gem "elasticsearch-rails"
+gem "daemons" # for running delayed jobs in development env
 gem "delayed_job_active_record"
 gem "geocoder"
 gem "jbuilder", "~> 2.5"
@@ -37,7 +38,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "daemons" # for running delayed jobs in development env
   gem "letter_opener"
   gem "letter_opener_web"
   gem "listen", ">= 3.0.5", "< 3.2"
