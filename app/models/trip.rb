@@ -60,6 +60,7 @@ class Trip < ApplicationRecord
       options ||= {}
       # empty search not allowed, for now
       return nil if options.blank?
+
       sql_query_string = <<-SQL
           select trip_point_a.id, departure_date, point_a_rank as from_rank, rank as to_rank
           from (

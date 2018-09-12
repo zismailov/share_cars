@@ -45,6 +45,7 @@ module Searchable
       options ||= {}
       # empty search not allowed, for now
       return nil if options.blank?
+
       # define search definition
       search_definition = {
         query: {
