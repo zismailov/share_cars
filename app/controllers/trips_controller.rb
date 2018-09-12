@@ -103,7 +103,7 @@ class TripsController < ApplicationController
       :comfort,
       :smoking,
       points_attributes: %i[
-        id kind rank location_name location_coordinates _destroy
+        id kind rank city lon lat _destroy
       ])
   end
 

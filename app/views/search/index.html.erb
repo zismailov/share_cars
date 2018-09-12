@@ -16,7 +16,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">
-            <%= "#{pluralize(@trips.count, 'carpooling', plural: 'carpools')} from #{@search.short_from_name} to #{@search.short_to_name}" %>
+            <%= "#{pluralize(@trips.count, 'carpooling', plural: 'carpools')} from #{@search.from_city} to #{@search.to_city}" %>
           </h3>
         </div>
         <div class="panel-body" style="padding: 0">

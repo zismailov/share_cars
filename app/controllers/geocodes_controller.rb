@@ -12,7 +12,7 @@ class GeocodesController < ApplicationController
   #  => "Lille"
 
   #
-  # Should return :
+  # @returns :
   #  [{ display_name: "Lille", lat: ..., lon: ...}, {}]
   #
   def autocomplete

@@ -11,8 +11,8 @@ function initAutocomplete() {
       $.getJSON("/geocodes/autocomplete?term=" + request.term, function (data) {
         response($.map(data, function (el) {
           return {
-            label: el.display_name,
-            value: el.display_name,
+            label: el.city,
+            value: el.city,
             id: [el.lat, el.lon]
           }
         }))
@@ -20,7 +20,8 @@ function initAutocomplete() {
     },
     minLength: 2,
     select: function (event, ui) {
-      $('#' + this.id.replace(/name/, 'coordinates')).val(ui.item.id)
+      $('#' + this.id.replace(/city/, 'lat')).val(ui.item.id[0])
+      $('#' + this.id.replace(/city/, 'lon')).val(ui.item.id[1])
     }
   })
 }
