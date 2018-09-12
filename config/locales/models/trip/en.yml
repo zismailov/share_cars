@@ -13,7 +13,12 @@ en:
         phone: Phone
         email: Email
         seats: Number of places
+        title: Sex
+        title_M: Man
+        title_F: Woman
         smoking: Smoking
+        smoking_true: Yes
+        smoking_false: No
         comfort: Comfort
         comfort_standard: Basic
         comfort_comfort: Normal

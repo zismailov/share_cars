@@ -1,0 +1,9 @@
+en:
+  activerecord:
+    models:
+      message: Message
+    attributes:
+      message:
+        sender_name: Your name
+        sender_email: Your email
+        body: Your message
