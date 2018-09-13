@@ -1,0 +1,6 @@
+en:
+  routes:
+    trips: trips
+    new: new
+    edit: edit
+    search: search 

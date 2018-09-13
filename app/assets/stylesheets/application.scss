@@ -2,6 +2,7 @@
  * import nothing from sprockets as it is explained here https://github.com/twbs/bootstrap-sass
  *= require bootstrap-datepicker3
  *= require jquery-ui/autocomplete
+ *= require ie10-viewport-bug-workaround
  */
 
 @import "bootstrap-sprockets";
