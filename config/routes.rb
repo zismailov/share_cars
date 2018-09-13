@@ -11,7 +11,10 @@ Rails.application.routes.draw do
       resources :messages
     end
     get "search", to: "search#index"
-    get "association", to: "pages#association"
+
+    PagesController::STATIC_PAGES.each do |page|
+      get page, to: "pages##{page}"
+    end
   end
 
   resources :geocodes do
@@ -19,8 +22,6 @@ Rails.application.routes.draw do
       get "autocomplete"
     end
   end
-
-  get "homes/index"
 
   root to: "homes#index"
 end
