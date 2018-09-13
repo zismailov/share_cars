@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="navbar-header">
       <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
@@ -7,20 +7,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<%= root_url %>"></a>
+      <a class="navbar-brand" href="<%= root_url %>">
         <%= image_tag 'logo.png', height: '80', alt: 'Logo' %>
       </a>
     </div>
-    <div class="navbar-collapse collapse pull-right" id="navbar">
-      <ul class="nav navbar-nav">
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= link_to "The association", '#' %>
+          <%= link_to 'Make a donation', '#', target: '_blank' %>
         </li>
         <li>
-          <%= link_to "Make a donation", '#' %>
+          <%= link_to 'To contribute', '#', target: '_blank' %>
         </li>
         <li>
-          <%= link_to "To contribute", '#' %>
+          <p class="navbar-btn">
+            <%= link_to 'Post an ad', new_trip_path, class: 'btn btn-warning' %>
+          </p>
         </li>
       </ul>
     </div>
