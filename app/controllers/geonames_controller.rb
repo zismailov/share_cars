@@ -4,4 +4,4 @@ class GeonamesController < ApplicationController
   def autocomplete
     @results = Geoname.search_by_name(params[:term]).limit(5)
   end
- end
+end
