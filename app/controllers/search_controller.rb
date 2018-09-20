@@ -2,10 +2,10 @@ class SearchController < ApplicationController
   def index
     @search = Search.new(search_params)
     @trips ||= []
-    if @search.valid?
-      found_trips = Trip.search(@search)
-      @trips = Trip.includes(:points).find(found_trips.map(&:id))
-    end
+    return if @search.valid?
+
+    found_trips = Trip.search(@search)
+    @trips = Trip.includes(:points).find(found_trips.map(&:id))
    end
 
   private

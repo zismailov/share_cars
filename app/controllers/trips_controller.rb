@@ -7,9 +7,9 @@ class TripsController < ApplicationController
   end
 
   def show
-    unless @trip.confirmed?
-      flash[:notice] = "Your ad is saved but not yet published. We sent you a confirmation email to validate your ad."
-    end
+    return unless @trip.confirmed?
+
+    flash[:notice] = "Your ad is saved but not yet published. We sent you a confirmation email to validate your ad."
   end
 
   def new
