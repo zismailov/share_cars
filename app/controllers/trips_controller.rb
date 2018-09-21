@@ -1,12 +1,11 @@
 class TripsController < ApplicationController
-  before_action :load_trip, only: %i[show update]
-
   def index
     params.permit!
     @trips = Trip.all.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def show
+    @trip = Trip.find_by_confirmation_token(params[:id])
     return unless @trip.confirmed?
 
     flash[:notice] = "Your ad is saved but not yet published. We sent you a confirmation email to validate your ad."
@@ -58,6 +57,7 @@ class TripsController < ApplicationController
   end
 
   def update
+    @trip = Trip.find_by_confirmation_token(params[:id])
     if @trip.update_attributes(trip_params)
       redirect_to @trip, notice: "Your ad is up-to-date Thank you for your contribution to the community!"
     else
@@ -84,10 +84,6 @@ class TripsController < ApplicationController
   end
 
   private
-
-  def load_trip
-    @trip = Trip.find(params[:id])
-  end
 
   def trip_params
     params.require(:trip).permit(:departure_date,

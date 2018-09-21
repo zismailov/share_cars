@@ -6,7 +6,7 @@ class SearchController < ApplicationController
 
     found_trips = Trip.search(@search)
     @trips = Trip.includes(:points).find(found_trips.map(&:id))
-   end
+  end
 
   private
 
