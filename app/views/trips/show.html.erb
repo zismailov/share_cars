@@ -2,11 +2,9 @@
 <p>
   <%= link_to '&larr; Back to results'.html_safe, :back %>
 </p>
-
 <%= flash_messages %>
-
 <h3>
-  <%= "Back to results #{@trip.point_from.city} to #{@trip.point_to.city}" %>
+  <%= "Travel from #{@trip.point_from.city} to #{@trip.point_to.city}" %>
 </h3>
 <div class="row">
   <div class="col-md-6">
@@ -18,7 +16,7 @@
           </div>
           <div class="col-md-8">
             <strong>
-              <%= "#{@trip.point_from.city}" %>
+              <%= @trip.point_from.city %>
             </strong>
           </div>
         </div>
@@ -28,7 +26,7 @@
           </div>
           <div class="col-md-8">
             <strong>
-              <%= "#{@trip.point_to.city}" %>
+              <%= @trip.point_to.city %>
             </strong>
           </div>
         </div>
@@ -108,8 +106,44 @@
         </div>
       </div>
     </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4>Steps</h4>
+        <div class="row">
+          <div class="col-md-4">
+            Departure
+          </div>
+          <div class="col-md-8">
+            <strong>
+              <%= @trip.point_from.city %>
+            </strong>
+          </div>
+        </div>
+        <% @trip.step_points.each_with_index do |step, index| %>
+          <div class="row">
+            <div class="col-md-4">
+              <%= "Step #{index+1}" %>
+            </div>
+            <div class="col-md-8">
+              <strong>
+                <%= step.city %>
+              </strong>
+            </div>
+          </div>
+        <% end %>
+        <div class="row">
+          <div class="col-md-4">
+            Arrival
+          </div>
+          <div class="col-md-8">
+            <strong>
+              <%= @trip.point_to.city %>
+            </strong>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-body">
@@ -117,14 +151,14 @@
           <div class="col-md-8">
             <div class="driver">
               <div class="avatar">
-                <%= image_tag('carpooling-avatar-default2.png') %>
+                <%= image_tag('avatar-default2.png') %>
               </div>
               <div class="info">
                 <div class="name">
                   <%= @trip.name %>
                 </div>
                 <div class="age">
-                  <%= "#{@trip.age} years" if @trip.age.present? %>
+                  <%= "#{@trip.age} ans" if @trip.age.present? %>
                 </div>
                 <div class="email">
                   <%= @trip.email %>
@@ -141,7 +175,7 @@
                 <%= "#{@trip.price} $" %>
               </p>
               <div class="seats">
-                <%= "#{@trip.seats} seats" %>
+                <%= "#{@trip.seats} places" %>
               </div>
             </div>
           </div>
