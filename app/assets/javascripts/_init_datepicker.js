@@ -1,6 +1,7 @@
 var initDatepicker = function () {
   $('.datepicker').datepicker({
     autoclose: true,
-    language: 'fr'
+    language: 'en',
+    format: 'dd/mm/yyyy'
   })
 }
