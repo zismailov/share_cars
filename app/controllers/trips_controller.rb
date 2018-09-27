@@ -6,17 +6,14 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find_by_confirmation_token(params[:id])
-    return unless @trip.confirmed?
-
-    flash[:notice] = "Your ad is saved but not yet published. We sent you a confirmation email to validate your ad."
+    unless @trip.confirmed?
+      flash[:notice] = "Your ad is saved but not yet published. We have sent you a confirmation email to validate your ad."
+    end
   end
 
   def new
     @trip = Trip.new
-    point_from = @trip.points.build(kind: "From")
-    point_to = @trip.points.build(kind: "To")
-    @required_points = [point_from, point_to]
-    @optional_points = build_three_step_points
+    build_points
   end
 
   def create
@@ -24,10 +21,7 @@ class TripsController < ApplicationController
     if @trip.save
       redirect_to @trip, notice: "Your ad is saved but not yet published. We have sent you a confirmation email to validate your ad."
     else
-      point_from = @trip.point_from || @trip.points.build(kind: "From")
-      point_to = @trip.point_to || @trip.points.build(kind: "To")
-      @required_points = [point_from, point_to]
-      @optional_points = @trip.step_points.empty? ? build_three_step_points : @trip.step_points
+      build_points
       render :new
     end
   end
@@ -50,6 +44,7 @@ class TripsController < ApplicationController
     flash[:notice] = "You can edit your ad by updating the form below."
     @trip = Trip.find_by(edition_token: params[:token])
     if @trip
+      build_points
       render :edit
     else
       render :not_found # let's give no information on this error to the internet
@@ -61,11 +56,7 @@ class TripsController < ApplicationController
     if @trip.update_attributes(trip_params)
       redirect_to @trip, notice: "Your ad is up-to-date Thank you for your contribution to the community!"
     else
-      point_from = @trip.point_from || @trip.points.build(kind: "From")
-      point_to = @trip.point_to || @trip.points.build(kind: "To")
-      @required_points = [point_from, point_to]
-      @optional_points = @trip.step_points.empty? ? build_three_step_points : @trip.step_points
-      render :new
+      build_points
     end
   end
 
@@ -74,7 +65,7 @@ class TripsController < ApplicationController
     @trip = Trip.find_by(deletion_token: params[:token])
     if @trip
       if @trip.soft_delete!
-        render :show, notice: "Your ad is deleted. To cancel click here: <a href='/trips/@trip.id/confirm?confirmation_token: #{@trip.confirmation_token}'>Cancel</a>"
+        render :show, notice: "Your ad is deleted. To cancel click here: <a href='/trips/@trip.id/confirm?confirmation_token:#{@trip.confirmation_token}'> Cancel </a>"
       else
         render :not_found # let's give no information on this error to the internet
       end
@@ -103,7 +94,18 @@ class TripsController < ApplicationController
       ])
   end
 
+  def build_points
+    return nil if @trip.nil?
+
+    point_from = @trip.point_from || @trip.points.build(kind: "From")
+    point_to = @trip.point_to || @trip.points.build(kind: "To")
+    @required_points = [point_from, point_to]
+    @optional_points = @trip.step_points.empty? ? build_three_step_points : @trip.step_points
+  end
+
   def build_three_step_points
+    return nil if @trip.nil?
+
     three_step_points = []
     3.times do |i|
       three_step_points << @trip.points.build(kind: "Step", rank: (i + 1))
