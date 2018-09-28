@@ -17,5 +17,9 @@
 </p>
 <p>
   You can recontact him, his email is :
-  <%= @message.sender_email  %>
+  <%= @message.sender_email %>
+  <% if @message.sender_phone.present? %>
+    His phone number is the :
+    <%= @message.sender_phone %>
+  <% end %>
 </p>

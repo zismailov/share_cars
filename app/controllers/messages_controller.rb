@@ -11,11 +11,11 @@ class MessagesController < ApplicationController
         format.js { render :errors }
       end
     end
- end
+  end
 
   private
 
   def message_params
-    params.require(:message).permit(:sender_name, :sender_email, :body, :trip_id)
+    params.require(:message).permit(:sender_name, :sender_email, :sender_phone, :body, :trip_id)
   end
 end
