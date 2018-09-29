@@ -6,6 +6,13 @@
 <h3>
   <%= "Travel from #{@trip.point_from.city} to #{@trip.point_to.city}" %>
 </h3>
+
+<div class="trip-ownership pull-right">
+  Is this your ad?
+  <%= link_to 'Click here', resend_email_trip_path(@trip) %>
+  to receive the ad management email
+</div>
+
 <div class="row">
   <div class="col-md-6">
     <div class="panel panel-default">

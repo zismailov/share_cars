@@ -7,7 +7,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find_by_confirmation_token(params[:id])
     unless @trip.confirmed?
-      flash[:notice] = "Your ad is saved but not yet published. We have sent you a confirmation email to validate your ad."
+      flash[:notice] << "Your ad is saved but not yet published. We have sent you a confirmation email to validate your ad."
     end
   end
 
@@ -77,6 +77,12 @@ class TripsController < ApplicationController
   def points
     @trip = Trip.find_by_confirmation_token(params[:id])
     render json: @trip.points
+  end
+
+  def resend_email
+    @trip = Trip.find_by_confirmation_token(params[:id])
+    @trip&.send_information_email
+    redirect_to @trip, notice: "We sent you the ad management email to the ad."
   end
 
   private
