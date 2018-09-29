@@ -6,5 +6,5 @@ module TripsHelper
       breadcrumbs << " &rarr; " unless step == trip.points.last
     end
     breadcrumbs.html_safe
- end
+  end
 end
