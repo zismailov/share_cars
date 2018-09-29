@@ -4,7 +4,7 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.en-CA.js
-//= require leaflet
+//= require leaflet.js.erb
 //= require leaflet-routing-machine
 //= require _init_datepicker.js
 //= require _init_autocomplete.js
