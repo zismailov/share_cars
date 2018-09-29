@@ -6,4 +6,5 @@ en:
       message:
         sender_name: Your name
         sender_email: Your email
+        sender_phone: Your phone number
         body: Your message
