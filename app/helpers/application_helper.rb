@@ -22,4 +22,13 @@ module ApplicationHelper
     end
     html.html_safe
   end
+
+  def trip_steps_breadcrumb(trip)
+    breadcrumbs = ""
+    trip.points.each do |step|
+      breadcrumbs << step.city
+      breadcrumbs << " &rarr; " unless step == trip.points.last
+    end
+    breadcrumbs.html_safe
+  end
 end
