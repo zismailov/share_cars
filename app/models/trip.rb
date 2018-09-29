@@ -19,6 +19,7 @@ class Trip < ApplicationRecord
   validates_inclusion_of :departure_date, in: Date.today..Date.today + 1.year, message: "Put a date between today and in 1 year"
   validates_numericality_of :price, :age, :seats, greater_than_or_equal_to: 1
   validate :must_have_from_and_to_points
+  validates_acceptance_of :terms_of_service
 
   after_create :send_information_email
 

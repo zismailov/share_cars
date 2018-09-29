@@ -89,6 +89,7 @@ class TripsController < ApplicationController
       :seats,
       :comfort,
       :smoking,
+      :terms_of_service,
       points_attributes: %i[
         id kind rank city lon lat _destroy
       ])

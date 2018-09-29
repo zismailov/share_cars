@@ -3,6 +3,7 @@ en:
     trips: trips
     new: new
     edit: edit
-    search: search 
+    search: search
     press: press
-    terms: terms
+    terms_of_service: cgus
+    legal_notics: Legal notice

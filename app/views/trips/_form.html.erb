@@ -60,7 +60,18 @@
           <%= f.input :smoking, as: :radio_buttons, wrapper: :horizontal_collection, item_label_class: 'radio-inline' %>
         </div>
       </div>
-      <%= f.button :submit, class: 'btn btn-primary btn-lg pull-right' %>
+      <div class="row">
+        <div class="col-md-6">
+          <% if @trip.new_record? %>
+            <div style="padding-left: 15px;">
+              <%= f.input :terms_of_service, label: "I validate #{link_to('CGUs', '/cgus', target: '_blank')}".html_safe %>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-md-6">
+          <%= f.button :submit, class: 'btn btn-primary btn-lg pull-right' %>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
