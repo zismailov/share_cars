@@ -100,12 +100,7 @@
       <div class="panel-heading">
         <h3 class="panel-title">
           <strong>Steps :</strong>
-          <% @trip.points.each_with_index do |step| %>
-            <%= step.city %>
-            <% unless step == @trip.points.last %>
-              &rarr;
-            <% end %>
-          <% end %>
+            <%= display_steps(trip) %>
         </h3>
       </div>
       <div class="panel-body">
