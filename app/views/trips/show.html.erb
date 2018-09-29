@@ -11,10 +11,10 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-lg-4">
             Departure
           </div>
-          <div class="col-md-8">
+          <div class="col-lg-8">
             <strong>
               <%= @trip.point_from.city %>
             </strong>
@@ -72,16 +72,6 @@
         </div>
         <div class="row">
           <div class="col-md-4">
-            Comment
-          </div>
-          <div class="col-md-8">
-            <div class="well">
-              <%= @trip.description %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
             Price
           </div>
           <div class="col-md-8">
@@ -107,39 +97,20 @@
       </div>
     </div>
     <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <strong>Steps :</strong>
+          <% @trip.points.each_with_index do |step| %>
+            <%= step.city %>
+            <% unless step == @trip.points.last %>
+              &rarr;
+            <% end %>
+          <% end %>
+        </h3>
+      </div>
       <div class="panel-body">
-        <h4>Steps</h4>
-        <div class="row">
-          <div class="col-md-4">
-            Departure
-          </div>
-          <div class="col-md-8">
-            <strong>
-              <%= @trip.point_from.city %>
-            </strong>
-          </div>
-        </div>
-        <% @trip.step_points.each_with_index do |step, index| %>
-          <div class="row">
-            <div class="col-md-4">
-              <%= "Step #{index+1}" %>
-            </div>
-            <div class="col-md-8">
-              <strong>
-                <%= step.city %>
-              </strong>
-            </div>
-          </div>
-        <% end %>
-        <div class="row">
-          <div class="col-md-4">
-            Arrival
-          </div>
-          <div class="col-md-8">
-            <strong>
-              <%= @trip.point_to.city %>
-            </strong>
-          </div>
+        <div id="route-wrapper">
+          <div id="route"></div>
         </div>
       </div>
     </div>
@@ -151,7 +122,7 @@
           <div class="col-md-8">
             <div class="driver">
               <div class="avatar">
-                <%= image_tag('avatar-default2.png') %>
+                <%= image_tag('default2.png') %>
               </div>
               <div class="info">
                 <div class="name">
@@ -172,11 +143,20 @@
           <div class="col-md-4">
             <div class="price">
               <p>
-                <%= "#{@trip.price} $" %>
+                <%= "#{@trip.price} e" %>
               </p>
               <div class="seats">
                 <%= "#{@trip.seats} places" %>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-9 col-md-offset-1">
+            <br/>
+            <%= "Comment from #{@trip.name} :" %>
+            <div class="well">
+              <%= @trip.description %>
             </div>
           </div>
         </div>
@@ -193,3 +173,27 @@
     </div>
   </div>
 </div>
+
+<% content_for :javascript_footer do %>
+  <script>
+    var tripPoints = [];
+
+    $.getJSON( "#{points_trip_path(@trip)}", function( data ) {
+      $.each( data, function( index, item ) {
+        tripPoints.push([parseFloat(item.lat), parseFloat(item.lon)]);
+      });
+
+      var map = L.map('route').setView(tripPoints[0], 1);
+
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}{r}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      L.Routing.control({
+        waypoints: tripPoints,
+        routeWhileDragging: true,
+        show: false // setting show to false hides the directions text block
+      }).addTo(map);
+    });
+  </script>
+<% end %>

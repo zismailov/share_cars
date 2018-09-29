@@ -1,8 +1,10 @@
 /*
  * import nothing from sprockets as it is explained here https://github.com/twbs/bootstrap-sass
  *= require bootstrap-datepicker3
- *= require jquery-ui/autocomplete
  *= require ie10-viewport-bug-workaround
+ *= require jquery-ui/autocomplete
+ *= require leaflet
+ *= require leaflet-routing-machine
  */
 
 @import "bootstrap-sprockets";
@@ -13,3 +15,11 @@
 @import "_jumbotron";
 @import "_home";
 @import "_trip";
+
+#route-wrapper {
+  #route {
+    width: 100%;
+    height: 400px;
+    border: 1px solid #ccc;
+  }
+}
