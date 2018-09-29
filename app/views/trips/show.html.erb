@@ -46,7 +46,7 @@
           </div>
           <div class="col-md-8">
             <strong>
-              <%= l @trip.departure_time, format: :short %>
+              <%= @trip.departure_time.try(:strftime, "%k:%m") %>
             </strong>
           </div>
         </div>
