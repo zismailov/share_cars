@@ -45,7 +45,7 @@
         <div class="panel-body">
           <%= f.input :title, as: :radio_buttons, wrapper: :horizontal_collection, item_label_class: 'radio-inline', collection: [['Man', 'M'], ['Woman', 'W']], label: 'You are' %>
           <%= f.input :name, as: :string, wrapper: :horizontal_form %>
-          <%= f.input :age, as: :string, wrapper: :horizontal_form %>
+          <%= f.input :age, as: :string, wrapper: :horizontal_form, input_html: { min: '0', step: 'any' } %>
           <%= f.input :phone, as: :string, wrapper: :horizontal_form %>
           <%= f.input :email, as: :string, wrapper: :horizontal_form %>
         </div>
@@ -55,7 +55,7 @@
           <h3 class="panel-title">Your car</h3>
         </div>
         <div class="panel-body">
-          <%= f.input :seats, wrapper: :horizontal_form %>
+          <%= f.input :seats, wrapper: :horizontal_form, input_html: { min: '0', step: 'any' } %>
           <%= f.input :comfort, wrapper: :horizontal_form, collection: Trip::CAR_RATINGS.map(&:to_sym) %>
           <%= f.input :smoking, as: :radio_buttons, wrapper: :horizontal_collection, item_label_class: 'radio-inline' %>
         </div>
