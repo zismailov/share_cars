@@ -1,0 +1,32 @@
+
+<h1 class="pull-left">Liste des "Page Parts"
+  <%= link_to 'New "Page part"', new_admin_page_part_path, class: 'btn btn-primary pull-right top-list-button' %>
+  <table class="table">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="2"></th>
+    </tr>
+    <% @page_parts.each do |page_part| %>
+      <tr>
+        <td>
+          <%= page_part.id %>
+        </td>
+        <td>
+          <%= page_part.name %>
+        </td>
+        <td>
+          <%= page_part.title %>
+        </td>
+        <td>
+          <%= page_part.body %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_admin_page_part_path(page_part), class: 'btn btn-default btn-sm'  %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</h1>

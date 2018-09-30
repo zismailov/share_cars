@@ -8,6 +8,9 @@ Rails.application.routes.draw do
         get "confirm"
         get "delete"
         get "resend_email"
+        get "new_from_copy"
+        get "new_for_back"
+        get "clone"
         get "points"
       end
       resources :messages
@@ -23,6 +26,11 @@ Rails.application.routes.draw do
     collection do
       get "autocomplete"
     end
+  end
+
+  namespace :admin do
+    resources :page_parts
+    root to: "page_parts#index"
   end
 
   root to: "homes#index"

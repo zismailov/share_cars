@@ -1,3 +1,13 @@
+<% content_for :page_part1 do %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <%= @page_part1.try(:body) %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <% content_for :search_zone do %>
   <div class="jumbotron">
     <div class="container">
