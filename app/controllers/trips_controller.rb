@@ -7,7 +7,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find_by_confirmation_token(params[:id])
     unless @trip.confirmed?
-      flash[:notice] << "Your ad is saved but not yet published. We have sent you a confirmation email to validate your ad."
+      flash[:notice] = "Your ad is saved but not yet published. We have sent you a confirmation email to validate your ad."
     end
   end
 
@@ -81,8 +81,32 @@ class TripsController < ApplicationController
 
   def resend_email
     @trip = Trip.find_by_confirmation_token(params[:id])
-    @trip&.send_information_email
-    redirect_to @trip, notice: "We sent you the ad management email to the ad."
+    if @trip
+      @trip.send_information_email
+      redirect_to @trip, notice: "We sent you the ad management email to the ad."
+    else
+      render :not_found # let's give no information on this error to the internet
+    end
+  end
+
+  def new_from_copy
+    @trip = Trip.find_by_confirmation_token(params[:id])
+    if @trip
+      @trip = @trip.clone_without_date
+      render :new
+    else
+      render :not_found # let's give no information on this error to the internet
+    end
+  end
+
+  def new_for_back
+    @trip = Trip.find_by_confirmation_token(params[:id])
+    if @trip
+      @trip = @trip.clone_as_back_trip
+      render :new
+    else
+      render :not_found # let's give no information on this error to the internet
+    end
   end
 
   private
