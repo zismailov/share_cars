@@ -176,6 +176,11 @@
   </div>
 </div>
 
+<div class="duplicate">
+  <%= link_to 'Copy path', new_from_copy_trip_path(@trip), class: 'btn btn-default' %>
+  <%= link_to 'Create the return trip', new_for_back_trip_path(@trip), class: 'btn btn-default' %>
+</div>
+
 <% content_for :javascript_footer do %>
   <script>
     var tripPoints = [];
