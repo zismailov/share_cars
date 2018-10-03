@@ -87,14 +87,6 @@
         </div>
         <div class="row">
           <div class="col-md-4">
-            Sex
-          </div>
-          <div class="col-md-8">
-            <%= t :"activerecord.attributes.trip.title_#{@trip.title}" %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
             Smoking
           </div>
           <div class="col-md-8">
@@ -132,6 +124,9 @@
                 </div>
                 <div class="age">
                   <%= "#{@trip.age} ans" if @trip.age.present? %>
+                </div>
+                <div class="sex">
+                  <%= t :"activerecord.attributes.trip.title_#{@trip.title}" %>
                 </div>
                 <div class="email">
                   <%= @trip.email %>
