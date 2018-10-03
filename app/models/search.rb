@@ -22,6 +22,6 @@ class Search
   private
 
   def dont_search_the_past
-    errors.add(:date, "can not be in the past") if date.present? && date_value < Date.today
+    errors.add(:date, "Look for a future date") if date.present? && date_value < Date.today
   end
 end
