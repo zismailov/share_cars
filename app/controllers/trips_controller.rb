@@ -128,7 +128,7 @@ class TripsController < ApplicationController
       :smoking,
       :terms_of_service,
       points_attributes: %i[
-        id kind rank city lon lat _destroy
+        id kind rank city lon lat price _destroy
       ])
   end
 
