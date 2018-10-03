@@ -8,6 +8,7 @@ gem "appsignal"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap-datepicker-rails"
 gem "bootstrap-sass"
+gem "cocoon"
 gem "coffee-rails", "~> 4.2"
 gem "daemons" # for running delayed jobs in development env
 gem "delayed_job_active_record"

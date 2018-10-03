@@ -26,18 +26,14 @@
           <h3 class="panel-title">Optional: Do you make steps?</h3>
         </div>
         <div class="panel-body">
-          <% i = 0 %>
-          <%= f.simple_fields_for :points, @optional_points do |p| %>
-            <% i += 1 %>
-            <div class="form-inputs row">
-              <%= p.input :city, as: :string, wrapper: :horizontal_form, wrapper_html: { class: 'col-sm-9' }, input_html: { class: 'geoname' }, placeholder: t(p.object.kind.downcase), label: t(p.object.kind.downcase+'_place') + " #{i}", required: false %>
-              <%= p.input :price, as: :string, wrapper: :horizontal_form, wrapper_html: { class: 'col-sm-3' }, placeholder: 'Price', label: false %>
-              <%= p.input :lon, as: :hidden %>
-              <%= p.input :lat, as: :hidden %>
-              <%= p.input :kind, as: :hidden %>
-              <%= p.input :rank, as: :hidden %>
+          <div id="steps">
+            <%= f.simple_fields_for :points, @optional_points do |point| %>
+              <%= render 'point_fields', f: point %>
+            <% end %>
+            <div class="links">
+              <%= link_to_add_association '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add a step'.html_safe, f, :points, class: 'btn btn-default pull-right' %>
             </div>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -82,7 +78,8 @@
 
 <% content_for :javascript_footer do %>
   <script>
-    initAutocomplete()
+    $('.geoname').geonameAutocomplete()
     initDatepicker()
+    $('#steps').sortable();
   </script>
 <% end %>
