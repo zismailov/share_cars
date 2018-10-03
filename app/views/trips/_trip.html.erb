@@ -16,7 +16,7 @@
     <div class="trip-info">
       <div class="title">
         <%= l trip.departure_date, format: :long %>
-        <%= l trip.departure_time, format: :short %>
+        <%= trip.departure_time.try(:strftime, "%k:%m") %>
       </div>
       <div class="details">
         <%= trip_steps_breadcrumb(trip) %>
