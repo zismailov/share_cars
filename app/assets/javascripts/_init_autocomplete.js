@@ -14,18 +14,17 @@ jQuery.fn.extend({
               lon: el.lon
             }
           }))
-        })
+        });
       },
       select: function (event, ui) {
-        $('#' + this.id.replace(/city/, 'lat')).val(ui.item.lat)
-        $('#' + this.id.replace(/city/, 'lon')).val(ui.item.lon)
+        $('#' + this.id.replace(/city/, 'lat')).val(ui.item.lat).trigger('change');
+        $('#' + this.id.replace(/city/, 'lon')).val(ui.item.lon).trigger('change');
       },
       create: function () {
         $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
           return $("<li>")
             .append("<div><b>" + item.city + "</b><br />" + item.city + ', ' + item.country + ', ' + item.postcode + "</div>")
             .appendTo(ul);
-
         }
       }
     });
