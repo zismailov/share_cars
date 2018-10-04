@@ -18,7 +18,7 @@
             </div>
           <% end %>
           <br/>
-          <h5>Optional: Do you make steps?</h5>
+          <h5>Optional: Do you do steps?</h5>
           <div id="steps">
             <%= f.simple_fields_for :points, @optional_points do |point| %>
               <%= render 'point_fields', f: point %>
@@ -66,7 +66,7 @@
         <div class="col-md-6">
           <% if @trip.new_record? %>
             <div style="padding-left: 15px;">
-              <%= f.input :terms_of_service, label: "Je valide les #{link_to('CGUs', '/cgus', target: '_blank')}".html_safe %>
+              <%= f.input :terms_of_service, label: "I validate #{link_to('CGUs', '/cgus', target: '_blank')}".html_safe %>
             </div>
           <% end %>
         </div>
@@ -89,15 +89,15 @@
 
 <% content_for :javascript_footer do %>
   <script>
-    $('.geoname').geonameAutocomplete()
-    initDatepicker()
+    $('.geoname').geonameAutocomplete();
+    initDatepicker();
 
     var tripPoints = [];
 
     var map = L.map('route').setView([46.227638, 2.213749], 5);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '@ OpenStreetMap contributors'
+      attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
     var routing = L.Routing.control({
