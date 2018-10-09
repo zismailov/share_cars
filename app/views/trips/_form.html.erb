@@ -78,7 +78,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 hidden-xs hidden-sm">
       <div class="panel panel-default">
         <div class="panel-body">
           <div id="route-wrapper">
@@ -95,20 +95,36 @@
     $('.geoname').geonameAutocomplete();
     initDatepicker();
 
-    var myMap = L.map('route').setView([46.227638, 2.213749], 5);
+    $('#steps').on('cocoon:after-insert', function(e, step) {
+      $(step).find('.geoname').geonameAutocomplete();
+    });
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(myMap);
+    var screenSmStr = "(min-width: 992px)";
+    var mql = window.matchMedia(screenSmStr);
 
-    var myRouting = L.Routing.control({
-      waypoints: [],
-      routeWhileDragging: true,
-      show: false // setting show to false hides the directions text block
-    }).addTo(myMap);
+    // media query event handler
+    if (mql.matches) {
+      loadTripDrawerApp();
+    }
 
-    var initialTripPoints = #{raw @trip.points.map { |point| [point.lat.to_f, point.lon.to_f]}};
-    window.myTripPoints = new TripPoints().init(myRouting, initialTripPoints);
+    // trip drawer app loader function
+    function loadTripDrawerApp() {
+      var myMap = L.map('route').setView([46.227638, 2.213749], 5);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(myMap);
+
+      var myRouting = L.Routing.control({
+        waypoints: [],
+        routeWhileDragging: true,
+        show: false // setting show to false hides the directions text block
+      }).addTo(myMap);
+
+      var initialTripPoints = #{raw @trip.points.map { |point| [point.lat.to_f, point.lon.to_f]}};
+      window.myTripDrawing = new TripDrawing().init(myRouting, initialTripPoints);
+    }
   </script>
 <% end %>
+
 
