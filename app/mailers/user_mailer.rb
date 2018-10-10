@@ -1,4 +1,6 @@
 class UserMailer < ApplicationMailer
+  add_template_helper(ApplicationHelper)
+
   def trip_information(trip)
     @trip = trip
     mail(to: @trip.email, subject: "[Free Carpool] Information about your ad")
