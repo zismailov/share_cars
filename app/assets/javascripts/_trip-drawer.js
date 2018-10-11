@@ -119,6 +119,12 @@ function isFloat(n) {
   return Number(n) === n && n % 1 !== 0;
 }
 
+// Util functions
+
+function isFloat(n) {
+  return Number(n) === n && n % 1 !== 0;
+}
+
 function secondsToStringFR(seconds) {
   var sentence = "";
   var numyears = Math.floor(seconds / 31536000);

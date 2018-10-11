@@ -19,11 +19,15 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     if @trip.save
-      redirect_to @trip, notice: "Your ad is saved but not yet published. We have sent you a confirmation email to validate your ad."
+      redirect_to ready_to_confirm_trip_url(@trip), notice: "Your ad is saved but not yet published. We have sent you a confirmation email to validate your ad."
     else
       build_points
       render :new
     end
+  end
+
+  def ready_to_confirm
+    @trip = Trip.find_by_confirmation_token(params[:id])
   end
 
   # caution, this is a modifying action reached by a GET method
