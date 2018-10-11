@@ -74,11 +74,6 @@ class TripsController < ApplicationController
     end
   end
 
-  def points
-    @trip = Trip.find_by_confirmation_token(params[:id])
-    render json: @trip.points
-  end
-
   def resend_email
     @trip = Trip.find_by_confirmation_token(params[:id])
     if @trip
@@ -109,6 +104,12 @@ class TripsController < ApplicationController
     else
       render :not_found # let's give no information on this error to the internet
     end
+  end
+
+  # Ajax only methods
+  def points
+    @trip = Trip.find_by_confirmation_token(params[:id])
+    render json: @trip.points
   end
 
   private
