@@ -2,12 +2,20 @@
 <p>
   <%= link_to '&larr; Back to results'.html_safe, :back %>
 </p>
-<%= flash_messages %>
-<h3>
-  <%= "Travel from #{@trip.point_from.city} to #{@trip.point_to.city}" %>
-</h3>
 
-<div class="trip-ownership pull-right">
+<%= flash_messages %>
+
+<div class="page-header">
+  <h1>
+    <%= "Travel from #{@trip.point_from.city} to #{@trip.point_to.city}" %>
+    <small>
+      <%= distance_of_time_in_words(@trip.total_time) %>
+      <%= "- #{(@trip.total_distance / 1000).round} km" %>
+    </small>
+  </h1>
+</div>
+
+<div class="trip-ownership">
   Is this your ad?
   <%= link_to 'Click here', resend_email_trip_path(@trip) %>
   to receive the ad management email

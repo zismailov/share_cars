@@ -41,6 +41,8 @@
           <%= f.input :departure_time, as: :time, html5: false, wrapper: :horizontal_form, minute_step: 5 , required: true, input_html: { style: 'display: initial; width: initial;' }, prompt: { hour: '', minute: '' } %>
           <%= f.input :price, wrapper: :horizontal_form, input_html: { min: '0', step: 'any' } %>
           <%= f.input :description, wrapper: :horizontal_form %>
+          <%= f.input :total_distance, as: :hidden %>
+          <%= f.input :total_time, as: :hidden %>
         </div>
       </div>
       <div class="panel panel-default">
@@ -86,6 +88,7 @@
           </div>
         </div>
       </div>
+      <div class="pull-right" id="distance_and_time"></div>
     </div>
   </div>
 <% end %>
@@ -113,7 +116,7 @@
 
     var initialTripPoints = #{raw @trip.points.sort { |x, y| x.rank <=> y.rank }.map { |point| [point.lat.to_f, point.lon.to_f]}};
     window.myTripDrawing = new TripDrawing().init(myRouting, initialTripPoints);
-
+    window.myRouting = myRouting; 
   </script>
 <% end %>
 
