@@ -12,6 +12,7 @@ gem "cocoon"
 gem "coffee-rails", "~> 4.2"
 gem "daemons" # for running delayed jobs in development env
 gem "delayed_job_active_record"
+gem "dragonfly"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails"
 gem "jquery-turbolinks"

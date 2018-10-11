@@ -19,16 +19,15 @@
             </div>
           <% end %>
           <br/>
-          <h5>Optional: Do you do steps?</h5>
+           <h5>Optional: Do you do steps?</h5>
           <div id="steps">
             <% index = 0 %>
-              <%= f.simple_fields_for :points, @optional_points do |point| %>
-                <%= render 'point_fields', f: point %>
-              <% end %>
-              <div class="links">
-                <%= link_to_add_association '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add a step'.html_safe, f, :points, class: 'btn btn-default pull-right' %>
-              </div>
+            <%= f.simple_fields_for :points, @optional_points do |point| %>
+              <%= render 'point_fields', f: point %>
             <% end %>
+            <div class="links">
+              <%= link_to_add_association '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add a step'.html_safe, f, :points, { class: 'btn btn-default pull-right', render_options: {locals: { rank: index }}} %>
+            </div>
           </div>
         </div>
       </div>

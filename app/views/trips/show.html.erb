@@ -136,11 +136,8 @@
                 <div class="sex">
                   <%= t :"activerecord.attributes.trip.title_#{@trip.title}" %>
                 </div>
-                <div class="email">
-                  <%= @trip.email %>
-                </div>
-                <div class="phone">
-                  <%= @trip.phone %>
+                <div class="phone" id="image_phone">
+                  <%= image_tag('') %>
                 </div>
               </div>
             </div>
@@ -186,6 +183,16 @@
 
 <% content_for :javascript_footer do %>
   <script>
+
+    var img = $("<img />").attr('src', "/text/#{@trip.phone}")
+      .on('load', function() {
+        if (!this.complete || typeof this.naturalWidth == "undefined" || this.naturalWidth == 0) {
+            alert('broken image!');
+        } else {
+            $("#image_phone").append(img);
+        }
+    });
+
     var tripPoints = [];
 
     $.getJSON( "#{points_trip_path(@trip)}", function( data ) {
