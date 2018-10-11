@@ -9,8 +9,8 @@
   <h1>
     <%= "Travel from #{@trip.point_from.city} to #{@trip.point_to.city}" %>
     <small>
-      <%= distance_of_time_in_words(@trip.total_time) %>
-      <%= "- #{(@trip.total_distance / 1000).round} km" %>
+      <%= distance_of_time_in_words(@trip.total_time) if @trip.total_time.present? %>
+      <%= "- #{(@trip.total_distance / 1000).round} km" if @trip.total_distance.present? %>
     </small>
   </h1>
 </div>
