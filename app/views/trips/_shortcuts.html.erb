@@ -1,0 +1,16 @@
+<h2>Convenient shortcuts</h2>
+<p>
+  To duplicate the ad you just saved, click the button below. The form will be
+  then pre-filled identically, except for the date of the trip.
+</p>
+<p>
+  <%= link_to 'Copy path', new_from_copy_trip_path(@trip), class: 'btn btn-warning' %>
+</p>
+<br/>
+<p>
+  To offer the return trip of your ad, click on the button below. The form will be
+  pre-filled automatically, the departure and arrival cities will be reversed (as well as your possible steps).
+</p>
+<p>
+  <%= link_to 'Create the return trip', new_for_back_trip_path(@trip), class: 'btn btn-warning' %>
+</p>

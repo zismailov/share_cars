@@ -1,0 +1,26 @@
+<br/>
+<%= flash_messages %>
+<div class="row">
+  <div class="col-md-8">
+    <h1>Thank you !</h1>
+    <p>
+      Your ad has been saved.
+    </p>
+    <p>
+      However, to definitively confirm your ad (and your email address), please click on the link provided
+      in the confirmation email that has just been sent to you.
+    </p>
+    <p>
+      Without your response within 24 hours, your ad will be automatically deleted. 
+    </p>
+    <br/>
+    <p>
+      You have not received the validation email?
+      <%= link_to 'Click here', resend_email_trip_path(@trip) %>
+      to receive him again.
+    </p>
+  </div>
+  <div class="col-md-4">
+    <%= render 'shortcuts' %>
+  </div>
+</div>

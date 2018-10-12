@@ -61,6 +61,10 @@ class Trip < ApplicationRecord
     state == "confirmed"
   end
 
+  def deleted?
+    state == "deleted"
+  end
+
   def send_confirmation_email
     UserMailer.trip_confirmation(self).deliver_later
   end
