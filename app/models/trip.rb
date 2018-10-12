@@ -24,7 +24,7 @@ class Trip < ApplicationRecord
   validates_acceptance_of :terms_of_service
   validates_format_of :email, with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  after_create :send_information_email
+  after_create :send_confirmation_email
 
   # eager load points each time a trip is requested
   default_scope { includes(:points).order("created_at ASC") }
@@ -50,6 +50,7 @@ class Trip < ApplicationRecord
 
   def confirm!
     update_attribute(:state, "confirmed")
+    send_information_email
   end
 
   def soft_delete!
@@ -58,6 +59,10 @@ class Trip < ApplicationRecord
 
   def confirmed?
     state == "confirmed"
+  end
+
+  def send_confirmation_email
+    UserMailer.trip_confirmation(self).deliver_later
   end
 
   def send_information_email
