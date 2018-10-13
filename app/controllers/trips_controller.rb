@@ -73,7 +73,7 @@ class TripsController < ApplicationController
   def resend_email
     @trip = Trip.find_by_confirmation_token(params[:id])
     if @trip
-      @trip.send_confirmation_email
+      @trip.send_information_email
       redirect_to :back, notice: "We sent you the validation email of the ad."
     else
       render :not_found # let's give no information on this error to the internet
