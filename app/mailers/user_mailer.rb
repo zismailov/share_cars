@@ -11,9 +11,15 @@ class UserMailer < ApplicationMailer
     mail(to: @trip.email, subject: "[Free Carpool] Manage your ad")
   end
 
-  def message_notification(message)
+  def message_received_notification(message)
     @message = message
     @trip = message.trip
-    mail(to: @trip.email, subject: "[Free Carpool] You have received a message for your ad")
+    mail(to: @trip.email, subject: "[Free Carpool] You have received a message")
+  end
+
+  def message_sent_notification(message)
+    @message = message
+    @trip = message.trip
+    mail(to: @message.sender_email, subject: "[Free Carpool] You sent a message")
   end
 end
