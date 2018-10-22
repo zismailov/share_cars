@@ -1,0 +1,17 @@
+You have received a message
+
+About your ad <%= trip_steps_breadcrumb(@trip) %>, the <%= l @trip.departure_date, format: :long %> to <%= @trip.departure_time.try(:strftime, "%k:%m") %>
+
+<%= message.sender_name %> sent you the following message:
+
+<%= @message.body %>
+
+You can reply by email : <%= @message.sender_email %>.
+
+<%- if @message.sender_phone.present? %>
+  or by phone : <%= @message.sender_phone %>
+<%- end %>
+
+Best regards,
+
+The team

@@ -1,0 +1,9 @@
+Regarding the announcement to go from <%= trip_steps_breadcrumb(@trip) %>, the <%= l @trip.departure_date, format: :long %> to <%= @trip.departure_time.try(:strftime, "%k:%m") %>,
+
+you sent the following message to <%= @trip.name %> :
+
+<%= @message.body %>
+
+Good road !
+
+The team

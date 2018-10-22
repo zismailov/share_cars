@@ -1,0 +1,15 @@
+Validation of your ad
+
+Hello,
+
+You have just submitted a trip proposal on carpooling-libre.fr. Your ad has been registered but it must be validated to be published on the site.
+
+Your ad : <%= trip_steps_breadcrumb(@trip) %>, the <%= l @trip.departure_date, format: :long %> to <%= @trip.departure_time.try(:strftime, "%k:%m") %>
+
+Confirm your ad: visit <%= url_for(confirm_trip_url(@trip)) %>
+
+You will then receive a message to manage your ad (modify, create the return trip, delete ...)
+
+Best regards
+
+The team
